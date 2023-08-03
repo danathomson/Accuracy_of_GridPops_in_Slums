@@ -17,7 +17,7 @@
 
 
 ######################
-## Initialise
+## Initialize
 ######################
 
 rm(list=ls())
@@ -36,21 +36,23 @@ proj.utm44 <- "+proj=utm +zone=44 +ellps=WGS84 +datum=WGS84 +units=m +no_defs" #
 proj.utm46 <- "+proj=utm +zone=46 +ellps=WGS84 +datum=WGS84 +units=m +no_defs" #WGS84/UTM 46N # Dhaka
 
 
-library(raster)
-library(rgeos)
-library(rgdal)
-library(dplyr)
-library(sp)
-library(exactextractr)
-library(tmaptools)
-library(sf)
-library(data.table)
-library(haven)
-library(survey)
-library(ggplot2)
+#packages (versions)
+# R version 4.3.1
+library(data.table)     #v1.14.8
+library(exactextractr)  #v0.9.1
+library(ggplot2)        #v3.4.2
+library(haven)          #v2.5.3 
+library(raster)         #3.6-23
+library(rgdal)          #1.6-7
+library(sf)             #v1.0-14
+library(sp)             #v2.0-0 
+library(survey)         #v4.2-1
+library(tmaptools)      #v3.1-1
 
 #library(NCmisc)
-#list.functions.in.file("D:/Dropbox/Work_main/p_ciesin_pop_slum_compare/code/paper3/part3_SDG11_v2.R", alphabetic = TRUE)
+#list.functions.in.file("C:/Users/danar/Dropbox/Work_main/p_ciesin_pop_slum_compare/code/paper3/part3_SDG11_v3.R", alphabetic = TRUE)
+#print(sessionInfo())
+
 
 ######################
 ##  Summarise population estimates
@@ -639,6 +641,8 @@ sdg$order <- with(sdg, ifelse(city_name %in% "Accra", 1,
                           ifelse(city_name %in% "Hyderabad",5,
                           ifelse(city_name %in% "Mumbai",3,6))))))
 
+write.csv(sdg, "C:/Users/danar/Dropbox/Work_main/p_ciesin_pop_slum_compare/output/sdg.csv", row.names = TRUE)
+
 
 
 # plot
@@ -658,3 +662,4 @@ fig_sdg
 
 ggsave("C:/Users/danar/Dropbox/Work_main/p_ciesin_pop_slum_compare/paper_3/fig_8_sdg_v2.tiff", fig_sdg, units="in", width=6, height=2.5, dpi=400, compression = 'lzw')
 ggsave("C:/Users/danar/Dropbox/Work_main/p_ciesin_pop_slum_compare/paper_3/fig_8_sdg_v2.png", fig_sdg, units="in", width=6, height=2.5, dpi=400)
+
